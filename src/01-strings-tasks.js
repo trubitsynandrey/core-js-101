@@ -200,31 +200,11 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  // let rec = '';
-  // let j = height;
-  // let i = width;
-  // while (i >= 0) {
-  //   while (j >= 0) {
-  //     if (i === width && j === height) {
-  //       rec += "'┌";
-  //       i -= 1;
-  //     }
-  //     if (i === 0 && j === height) {
-  //       rec += '┐\n';
-  //       j -= 1;
-  //       // i = width;
-  //     }
-  //     if (i < width && j === height) {
-  //       rec += '─';
-  //       i -= 1;
-  //     }
-  //     // if (i === width && j < height) {
-  //     //   rec += '│';
-  //     // }
-  //   }
-  // }
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const top = `┌${'─'.repeat(width - 2)}┐\n`;
+  const middle = `│${' '.repeat(width - 2)}│\n`;
+  const bottom = `└${'─'.repeat(width - 2)}┘\n`;
+  return top + middle.repeat(height - 2) + bottom;
 }
 
 /**
@@ -372,7 +352,6 @@ function getCardId(value) {
   });
   return result;
 }
-
 
 module.exports = {
   concatenateStrings,
