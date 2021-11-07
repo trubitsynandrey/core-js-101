@@ -255,7 +255,10 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-  const arr = String(ccn).split('').reverse().map((item) => parseInt(item, 10));
+  const arr = String(ccn)
+    .split('')
+    .reverse()
+    .map((item) => parseInt(item, 10));
   const lastDigit = arr.splice(0, 1)[0];
   let sum = arr.reduce((acc, val, i) => {
     const doubleVal = val * 2;
@@ -286,10 +289,14 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  const arr = String(num).split('').map((item) => parseInt(item, 10));
+  const arr = String(num)
+    .split('')
+    .map((item) => parseInt(item, 10));
   const sum = arr.reduce((a, b) => a + b, 0);
   if (sum === 1) return 1;
-  const srtSum = String(sum).split('').map((item) => parseInt(item, 10));
+  const srtSum = String(sum)
+    .split('')
+    .map((item) => parseInt(item, 10));
   return srtSum.reduce((a, b) => a + b, 0);
 }
 
@@ -376,8 +383,15 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const result = new Array(m1.length)
+    .fill(0)
+    .map(() => new Array(m2[0].length).fill(0));
+
+  // eslint-disable-next-line arrow-body-style
+  return result.map((row, i) => {
+    return row.map((val, j) => m1[i].reduce((sum, elm, k) => sum + elm * m2[k][j], 0));
+  });
 }
 
 /**
